@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Valentine ❤️</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url("photo.jpg") no-repeat center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+.card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 22px;
+  padding: 30px;
+  text-align: center;
+  color: white;
+  width: 90%;
+  max-width: 380px;
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.intro {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 1.9rem;
+  margin-bottom: 25px;
+}
+
+button {
+  border: none;
+  border-radius: 30px;
+  padding: 12px 28px;
+  font-size: 18px;
+  margin: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#yes {
+  background: #ff4d6d;
+  color: white;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+#no {
+  background: #eee;
+  color: #333;
+  position: absolute;
+}
+
+#message {
+  display: none;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  animation: fadeIn 2s ease;
+}
+
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 22px;
+  animation: float 4s linear forwards;
+}
+
+@keyframes float {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-110vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <div class="intro">Hey Almas… I have something to ask you 💌</div>
+
+  <h1>Will you be my Valentine? ❤️</h1>
+
+  <button id="yes" onclick="yesClick()">Yes ❤️</button>
+  <button id="no" onmouseover="moveNo()">No 🙈</button>
+
+  <div id="message"
+<strong>Almas,</strong><br><br>
+Being with you is my favorite feeling.<br>
+For four beautiful years, you’ve made my days brighter<br>
+and my heart calmer.<br><br>
+If love had a name, it would be yours.<br>
+Will you keep choosing me,<br>
+the way I’ll always choose you?<br><br>
+Happy Valentine’s Day, my forever ❤️🌹
+  </div>
+</div>
+
+<script>
+let yesBtn = document.getElementById("yes");
+let noBtn = document.getElementById("no");
+let size = 18;
+
+function moveNo() {
+  let x = Math.random() * (window.innerWidth - 100);
+  let y = Math.random() * (window.innerHeight - 60);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+
+  size += 7;
+  yesBtn.style.fontSize = size + "px";
+}
+
+function yesClick() {
+  document.querySelector(".intro").style.display = "none";
+  document.querySelector("h1").style.display = "none";
+  yesBtn.style.display = "none";
+  noBtn.style.display = "none";
+  document.getElementById("message").style.display = "block";
+  heartRain();
+}
+
+function heartRain() {
+  setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }, 250);
+}
+</script>
+
+</body>
+</html>
